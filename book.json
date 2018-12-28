@@ -1,0 +1,13 @@
+{
+    "gitbook": "2.x.x",
+    "variables": {},
+    "plugins": [
+        "toggle-chapters",
+        "yahei",
+        "fontsettings",
+        "mdinhtml",
+        "ace",
+        "emphasize"
+    ],
+    "pluginsConfig": {}
+}

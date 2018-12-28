@@ -1,0 +1,1162 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+    <!-- Start book 道缘随记 -->
+    <head>
+        <!-- head:start -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>单例模式 | 道缘随记</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-yahei/yahei.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-ace/ace.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-emphasize/plugin.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../../frontToEnd/gof/strategy.html" />
+    
+    
+    <link rel="prev" href="../../frontToEnd/gof/closure.html" />
+    
+
+        <!-- head:end -->
+    </head>
+    <body>
+        <!-- body:start -->
+        
+    <div class="book"
+        data-level="1.3.4"
+        data-chapter-title="单例模式"
+        data-filepath="frontToEnd/gof/single.md"
+        data-basepath="../.."
+        data-revision="Tue Jun 05 2018 02:21:21 GMT+0800 (中国标准时间)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="frontToEnd/index.html">
+            
+                
+                    <a href="../../frontToEnd/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        前端技术篇
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="frontToEnd/webStandrad/index.html">
+            
+                
+                    <a href="../../frontToEnd/webStandrad/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        WEB标准
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="frontToEnd/webStandrad/crossDomainAccess.html">
+            
+                
+                    <a href="../../frontToEnd/webStandrad/crossDomainAccess.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.1.</b>
+                        
+                        跨域的解决方案
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="frontToEnd/webStandrad/notification.html">
+            
+                
+                    <a href="../../frontToEnd/webStandrad/notification.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.2.</b>
+                        
+                        WEB通知API
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="frontToEnd/function/index.html">
+            
+                
+                    <a href="../../frontToEnd/function/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        函数式编程
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="frontToEnd/function/start.html">
+            
+                
+                    <a href="../../frontToEnd/function/start.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.1.</b>
+                        
+                        开始函数式编程
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="frontToEnd/gof/index.html">
+            
+                
+                    <a href="../../frontToEnd/gof/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        javascript设计模式
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="frontToEnd/gof/base.html">
+            
+                
+                    <a href="../../frontToEnd/gof/base.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.1.</b>
+                        
+                        设计模式基础知识
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="frontToEnd/gof/thisCallApply.html">
+            
+                
+                    <a href="../../frontToEnd/gof/thisCallApply.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.2.</b>
+                        
+                        this、call 和apply
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="frontToEnd/gof/closure.html">
+            
+                
+                    <a href="../../frontToEnd/gof/closure.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.3.</b>
+                        
+                        闭包与高阶函数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.3.4" data-path="frontToEnd/gof/single.html">
+            
+                
+                    <a href="../../frontToEnd/gof/single.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.4.</b>
+                        
+                        单例模式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="frontToEnd/gof/strategy.html">
+            
+                
+                    <a href="../../frontToEnd/gof/strategy.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.5.</b>
+                        
+                        策略模式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="frontToEnd/gof/agency.html">
+            
+                
+                    <a href="../../frontToEnd/gof/agency.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.6.</b>
+                        
+                        代理模式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.7" data-path="frontToEnd/gof/iterator.html">
+            
+                
+                    <a href="../../frontToEnd/gof/iterator.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.7.</b>
+                        
+                        迭代器模式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.8" data-path="frontToEnd/gof/observer.html">
+            
+                
+                    <a href="../../frontToEnd/gof/observer.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.8.</b>
+                        
+                        发布—订阅模式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.9" data-path="frontToEnd/gof/order.html">
+            
+                
+                    <a href="../../frontToEnd/gof/order.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.9.</b>
+                        
+                        命令模式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.10" data-path="frontToEnd/gof/composite.html">
+            
+                
+                    <a href="../../frontToEnd/gof/composite.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.10.</b>
+                        
+                        组合模式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.11" data-path="frontToEnd/gof/template.html">
+            
+                
+                    <a href="../../frontToEnd/gof/template.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.11.</b>
+                        
+                        模板方法模式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.12" data-path="frontToEnd/gof/flyweight.html">
+            
+                
+                    <a href="../../frontToEnd/gof/flyweight.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.12.</b>
+                        
+                        享元模式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.13" data-path="frontToEnd/gof/responsibilityDesign.html">
+            
+                
+                    <a href="../../frontToEnd/gof/responsibilityDesign.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.13.</b>
+                        
+                        职责链模式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.14" data-path="frontToEnd/gof/mediator.html">
+            
+                
+                    <a href="../../frontToEnd/gof/mediator.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.14.</b>
+                        
+                        中介者模式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.15" data-path="frontToEnd/gof/decorator.html">
+            
+                
+                    <a href="../../frontToEnd/gof/decorator.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.15.</b>
+                        
+                        装饰者模式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.16" data-path="frontToEnd/gof/state.html">
+            
+                
+                    <a href="../../frontToEnd/gof/state.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.16.</b>
+                        
+                        状态模式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.17" data-path="frontToEnd/gof/adapter.html">
+            
+                
+                    <a href="../../frontToEnd/gof/adapter.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.17.</b>
+                        
+                        适配器模式
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.18" data-path="frontToEnd/gof/singleResponsebility.html">
+            
+                
+                    <a href="../../frontToEnd/gof/singleResponsebility.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.18.</b>
+                        
+                        单一职责原则
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.19" data-path="frontToEnd/gof/leastKnowledge.html">
+            
+                
+                    <a href="../../frontToEnd/gof/leastKnowledge.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.19.</b>
+                        
+                        最少知识原则
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.20" data-path="frontToEnd/gof/openClose.html">
+            
+                
+                    <a href="../../frontToEnd/gof/openClose.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.20.</b>
+                        
+                        开放—封闭原则
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.21" data-path="frontToEnd/gof/interfaceAndFaceToApi.html">
+            
+                
+                    <a href="../../frontToEnd/gof/interfaceAndFaceToApi.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.21.</b>
+                        
+                        接口和面向接口编程
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.22" data-path="frontToEnd/gof/reviewCode.html">
+            
+                
+                    <a href="../../frontToEnd/gof/reviewCode.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.22.</b>
+                        
+                        代码重构
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="frontToEnd/ecmascript/index.html">
+            
+                
+                    <a href="../../frontToEnd/ecmascript/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        JS基础知识
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="frontToEnd/ecmascript/instanceofAndTypeof.html">
+            
+                
+                    <a href="../../frontToEnd/ecmascript/instanceofAndTypeof.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.1.</b>
+                        
+                        instanceof 与 typeof 的区别
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="frontToEnd/ecmascript/undefinedNull.html">
+            
+                
+                    <a href="../../frontToEnd/ecmascript/undefinedNull.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.2.</b>
+                        
+                        undefined与null的故事
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="frontToEnd/ecmascript/object.html">
+            
+                
+                    <a href="../../frontToEnd/ecmascript/object.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.3.</b>
+                        
+                        js里面关于object的方法
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="frontToEnd/git/index.html">
+            
+                
+                    <a href="../../frontToEnd/git/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        git相关文档
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="frontToEnd/react/index.html">
+            
+                
+                    <a href="../../frontToEnd/react/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                        react个人笔记
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="frontToEnd/react/base.html">
+            
+                
+                    <a href="../../frontToEnd/react/base.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.1.</b>
+                        
+                        react入门以及jsx语法简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="frontToEnd/react/component.html">
+            
+                
+                    <a href="../../frontToEnd/react/component.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.2.</b>
+                        
+                        组件详解
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="frontToEnd/canvas/index.html">
+            
+                
+                    <a href="../../frontToEnd/canvas/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.7.</b>
+                        
+                        canvas文档
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="frontToEnd/canvas/draw.html">
+            
+                
+                    <a href="../../frontToEnd/canvas/draw.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.7.1.</b>
+                        
+                        绘制形状
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="Java/index.html">
+            
+                
+                    <a href="../../Java/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Java技术篇
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="Java/environment.html">
+            
+                
+                    <a href="../../Java/environment.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Java环境安装
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="node/index.html">
+            
+                
+                    <a href="../../node/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        node相关技术
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="node/base.html">
+            
+                
+                    <a href="../../node/base.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        node基础知识
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="mysql/index.html">
+            
+                
+                    <a href="../../mysql/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        MYSQL的个人总结
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="mysql/createDatabase.html">
+            
+                
+                    <a href="../../mysql/createDatabase.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        数据库以及数据表的创建、删除、选择
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="mysql/type.html">
+            
+                
+                    <a href="../../mysql/type.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        MYSQL数据类型
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="mysql/usual.html">
+            
+                
+                    <a href="../../mysql/usual.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        常见的MYSQL语句
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="mysql/connect.html">
+            
+                
+                    <a href="../../mysql/connect.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        MYSQL的连接语句
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="mysql/group.html">
+            
+                
+                    <a href="../../mysql/group.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        MYSQL GROUP函数
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="mysql/else.html">
+            
+                
+                    <a href="../../mysql/else.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        待学习
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="frontToEnd/markdown.html">
+            
+                
+                    <a href="../../frontToEnd/markdown.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        markdown基础语法
+                    </a>
+            
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Published with GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../../" >道缘随记</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h3 id="&#x5355;&#x4F8B;&#x6A21;&#x5F0F;">&#x5355;&#x4F8B;&#x6A21;&#x5F0F;</h3>
+<p>&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x7684;&#x5B9A;&#x4E49; : &#x4FDD;&#x8BC1;&#x4E00;&#x4E2A;&#x7C7B;&#x4EC5;&#x6709;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#xFF0C;&#x5E76;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x8BBF;&#x95EE;&#x5B83;&#x7684;&#x5168;&#x5C40;&#x8BBF;&#x95EE;&#x70B9;&#x3002;</p>
+<h5 id="1&#x4E0D;&#x900F;&#x660E;&#x7684;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;">1.&#x4E0D;&#x900F;&#x660E;&#x7684;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;</h5>
+<pre><code>var singleTest = function(name) {
+    this.name = name;
+    this.instance = null;
+};
+singleTest.getName = function(name) {
+    if(!this.instance) {
+        this.instance = new singleTest(name);
+    }
+    return this.instance;
+}
+var cc = singleTest.getName(&quot;123&quot;);
+var dd = singleTest.getname(&quot;456&quot;);
+console.log(cc === dd); // true
+</code></pre><p>&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x7684;&#x7F16;&#x5199;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x662F;&#x901A;&#x8FC7;getName&#x6765;&#x8FDB;&#x884C;&#x5224;&#x65AD;&#x4E86;&#xFF0C;&#x76F4;&#x63A5;&#x83B7;&#x53D6;&#x4E0D;&#x597D;&#xFF0C;&#x6240;&#x4EE5;&#x901A;&#x8FC7;&#x628A;singleTest(name)
+&#x8D4B;&#x503C;&#x7ED9;instance&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;instance&#x662F;&#x4E0D;&#x662F;&#x5B58;&#x5728;&#x6765;&#x4FDD;&#x8BC1;&#x4EC5;&#x6709;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x3002;</p>
+<p>&#x4F46;&#x662F;&#x8FD9;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x900F;&#x660E;&#x7684;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#xFF0C;&#x900F;&#x660E;&#x7684;&#x6982;&#x5FF5;&#x662F;&#x4F60;&#x4E0D;&#x77E5;&#x9053;&#x4ED6;&#x662F;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#xFF0C;&#x4E0D;&#x662F;&#x660E;&#x786E;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x6B63;&#x5E38;&#x7684;&#x901A;&#x8FC7;new &#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x6765;
+&#x521B;&#x5EFA;&#x3002;</p>
+<h5 id="2&#x900F;&#x660E;&#x7684;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;">2.&#x900F;&#x660E;&#x7684;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;</h5>
+<pre><code>var createDiv = (function(){
+    var instance;
+    var createDiv = function(html) {
+        if(instance) {
+            return instance; 
+        } 
+        this.html = html;
+        this.init();
+        return instance = this;
+    };
+
+    createDiv.prototype.init = function() {
+        var div = document.createElement(&quot;div&quot;);
+        div.innerhtml = this.html;
+        document.body.appendChild(div);
+    };
+    return createDiv;
+})(window.createDiv || createDiv);
+var a = new createDiv(&quot;test1&quot;);
+var b = new createDiv(&quot;test2&quot;);
+console.log(a === b); // true
+</code></pre><p>&#x8FD9;&#x91CC;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x900F;&#x660E;&#x7684;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x76F4;&#x63A5;&#x5B9A;&#x4E49;createDiv&#x65B9;&#x6CD5;&#x5C31;&#x53EF;&#x4EE5;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x8FD8;&#x662F;&#x9700;&#x8981;&#x5224;&#x65AD;&#x6761;&#x4EF6;&#xFF0C;&#x6240;&#x4EE5;&#x5B9A;&#x4E49;&#x4E86;instance
+&#x53D8;&#x91CF;&#xFF0C;&#x4F46;&#x662F;&#x4E3A;&#x4E86;&#x4FDD;&#x8BC1;&#x53D8;&#x91CF;&#x6C61;&#x67D3;,&#x6211;&#x4EEC;&#x7528;&#x95ED;&#x5305;&#x5305;&#x88F9;&#x8D77;&#x6765;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x660E;&#x663E;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x597D;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4EE3;&#x7406;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x89E3;&#x51B3;&#x4E0A;&#x9762;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+<pre><code>//&#x8D1F;&#x8D23;&#x521B;&#x5EFA;createDiv&#xFF0C;&#x5E76;&#x4E14;&#x521D;&#x59CB;&#x5316;
+var createDiv = function(html) {
+    this.html = html;
+    this.init();
+};
+//createDiv&#x7684;init&#x65B9;&#x6CD5;
+createDiv.prototype.init = function() {
+    var div = document.createElement(&quot;div&quot;);
+    div.innerhtml = this.html;
+    document.body.appendChild(div);
+};
+//&#x4F5C;&#x4E3A;&#x4EE3;&#x7406;&#xFF0C;&#x6765;&#x4FDD;&#x8BC1;&#x6709;&#x4E14;&#x4EC5;&#x6709;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;
+var proxysingle = (function(){
+    var instance;
+    return function(html){
+        if(!instance) {
+            return new createDiv(html);
+        }
+        return instance;
+    }
+})();
+var a = new proxysingle(&quot;test1&quot;);
+var b = new proxysingle(&quot;test2&quot;);
+console.log(a === b); // true
+</code></pre><p>&#x8FD9;&#x91CC;&#x7684;&#x8BBE;&#x8BA1;&#x89C4;&#x5219;&#x662F;<strong>&#x5355;&#x4E00;&#x804C;&#x8D23;&#x539F;&#x5219;</strong>,&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#x53EA;&#x5B8C;&#x6210;&#x4E00;&#x4E2A;&#x4E8B;&#x52A1;&#x3002;</p>
+<h5 id="&#x964D;&#x4F4E;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x5E26;&#x6765;&#x7684;&#x547D;&#x540D;&#x6C61;&#x67D3;">&#x964D;&#x4F4E;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x5E26;&#x6765;&#x7684;&#x547D;&#x540D;&#x6C61;&#x67D3;</h5>
+<p>1.&#x4F7F;&#x7528;&#x547D;&#x540D;&#x7A7A;&#x95F4;</p>
+<p>&#x5C06;&#x53D8;&#x91CF;&#x4F5C;&#x4E3A;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x65B9;&#x5F0F;&#x6765;&#x5904;&#x7406;</p>
+<pre><code>var obj = {
+    a: function(){
+        console.log(&quot;A&quot;);
+    },
+    b: function(){
+        console.log(&quot;B&quot;);
+    },
+}
+</code></pre><p>2.&#x4F7F;&#x7528;&#x95ED;&#x5305;&#x6765;&#x5C01;&#x88C5;&#x53D8;&#x91CF;</p>
+<pre><code>var user = (function(){
+    var _name = &apos;sven&apos;,
+        _age = 29;
+    return {
+        getUserInfo: function() {
+            return _name + &apos;-&apos; + _age;
+        }
+    }
+})();
+</code></pre><h4 id="&#x60F0;&#x6027;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;">&#x60F0;&#x6027;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;</h4>
+<p>&#x60F0;&#x6027;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x5C31;&#x662F;&#x4F60;&#x5728;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x624D;&#x521B;&#x5EFA;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x4E00;&#x5F00;&#x59CB;&#x5C31;&#x521B;&#x5EFA;&#x3002;&#x62FF;&#x4E0A;&#x9762;&#x7684;&#x6848;&#x4F8B;&#x6765;&#x8BF4;&#x660E;&#x4E00;&#x4E0B;.</p>
+<pre><code>//&#x8D1F;&#x8D23;&#x521B;&#x5EFA;createDiv&#xFF0C;&#x5E76;&#x4E14;&#x521D;&#x59CB;&#x5316;
+var createDiv = function(html) {
+    this.html = html;
+    this.init();
+};
+//createDiv&#x7684;init&#x65B9;&#x6CD5;
+createDiv.prototype.init = function() {
+    var div = document.createElement(&quot;div&quot;);
+    div.innerhtml = this.html;
+    document.body.appendChild(div);
+};
+//&#x4F5C;&#x4E3A;&#x4EE3;&#x7406;&#xFF0C;&#x6765;&#x4FDD;&#x8BC1;&#x6709;&#x4E14;&#x4EC5;&#x6709;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;
+
+//&#x60F0;&#x6027;&#x5355;&#x4F8B;&#xFF0C;&#x5728;&#x9700;&#x8981;&#x7684;&#x65F6;&#x5019;&#x624D;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#xFF0C;&#x5982;&#x679C;&#x6709;&#x5C31;&#x4E0D;&#x521B;&#x5EFA;
+var proxysingle = (function(){
+    var instance;
+    return function(html){
+        if(!instance) {
+            return new createDiv(html);
+        }
+        return instance;
+    }
+})();
+
+//&#x975E;&#x60F0;&#x6027;&#x5355;&#x4F8B;&#xFF0C;&#x76F4;&#x63A5;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;div
+var proxysingle = (function(){
+    return function(html){
+        return new createDiv(html);
+    }
+})();
+var a = new proxysingle(&quot;test1&quot;);
+var b = new proxysingle(&quot;test2&quot;);
+console.log(a === b); // true
+</code></pre><h5 id="&#x901A;&#x7528;&#x60F0;&#x6027;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x7684;&#x521B;&#x5EFA;">&#x901A;&#x7528;&#x60F0;&#x6027;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x7684;&#x521B;&#x5EFA;</h5>
+<p>&#x901A;&#x7528;&#x60F0;&#x6027;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x5C31;&#x662F;&#x4F60;&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x521B;&#x5EFA;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x5355;&#x4F8B;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x90FD;&#x662F;&#x60F0;&#x6027;&#x5355;&#x4F8B;&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x6539;&#x53D8;&#x6539;&#x53D8;this&#x7684;&#x6307;&#x5411;&#x3002;</p>
+<pre><code>var general = function(fn) {
+    var result;
+    return function() {
+        return result || (result = fn.apply(this,argument); //&#x901A;&#x8FC7;apply&#x6765;&#x6539;&#x53D8;this&#x6307;&#x5411;
+    }
+};
+</code></pre><h4 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;:</h4>
+<h4 id="1&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x5C31;&#x662F;&#x4FDD;&#x8BC1;&#x5168;&#x5C40;&#x6709;&#x4E14;&#x4EC5;&#x6709;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#xFF0C;&#x5E76;&#x4E14;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x8BBF;&#x95EE;&#x70B9;&#x3002;">1.&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x5C31;&#x662F;&#x4FDD;&#x8BC1;&#x5168;&#x5C40;&#x6709;&#x4E14;&#x4EC5;&#x6709;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#xFF0C;&#x5E76;&#x4E14;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x8BBF;&#x95EE;&#x70B9;&#x3002;</h4>
+<h4 id="2&#x900F;&#x660E;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x900F;&#x660E;&#x7684;&#x6982;&#x5FF5;&#x662F;&#x6307;&#xFF0C;&#x901A;&#x8FC7;new-&#x6216;&#x8005;&#x6B63;&#x5E38;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x5B9E;&#x73B0;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x9690;&#x85CF;&#x5728;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x91CC;&#x9762;&#xFF0C;&#x6216;&#x8005;&#x5176;&#x4ED6;&#x7684;&#x5904;&#x7406;">2.&#x900F;&#x660E;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;(&#x900F;&#x660E;&#x7684;&#x6982;&#x5FF5;&#x662F;&#x6307;&#xFF0C;&#x901A;&#x8FC7;new &#x6216;&#x8005;&#x6B63;&#x5E38;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x5B9E;&#x73B0;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x9690;&#x85CF;&#x5728;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x91CC;&#x9762;&#xFF0C;&#x6216;&#x8005;&#x5176;&#x4ED6;&#x7684;&#x5904;&#x7406;)</h4>
+<h4 id="3&#x60F0;&#x6027;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x60F0;&#x6027;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x5C31;&#x662F;&#x6307;&#x5728;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x624D;&#x521B;&#x5EFA;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x521B;&#x5EFA;&#xFF0C;&#x8282;&#x7EA6;&#x7CFB;&#x7EDF;&#x8D44;&#x6E90;">3.&#x60F0;&#x6027;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;(&#x60F0;&#x6027;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x5C31;&#x662F;&#x6307;&#x5728;&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x624D;&#x521B;&#x5EFA;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x521B;&#x5EFA;&#xFF0C;&#x8282;&#x7EA6;&#x7CFB;&#x7EDF;&#x8D44;&#x6E90;)</h4>
+<h4 id="4&#x5355;&#x4E00;&#x804C;&#x8D23;&#x539F;&#x5219;">4.&#x5355;&#x4E00;&#x804C;&#x8D23;&#x539F;&#x5219;</h4>
+<h4 id="5&#x901A;&#x7528;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x5C06;&#x60F0;&#x6027;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x5C01;&#x88C5;&#x8D77;&#x6765;&#xFF0C;&#x6539;&#x53D8;this&#x6307;&#x5411;">5.&#x901A;&#x7528;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;(&#x5C06;&#x60F0;&#x6027;&#x5355;&#x4F8B;&#x6A21;&#x5F0F;&#x5C01;&#x88C5;&#x8D77;&#x6765;&#xFF0C;&#x6539;&#x53D8;this&#x6307;&#x5411;)</h4>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../../frontToEnd/gof/closure.html" class="navigation navigation-prev " aria-label="Previous page: 闭包与高阶函数"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../../frontToEnd/gof/strategy.html" class="navigation navigation-next " aria-label="Next page: 策略模式"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../../gitbook/app.js"></script>
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-ace/ace/ace.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-ace/ace.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"toggle-chapters":{},"yahei":{},"fontsettings":{"theme":"white","family":"sans","size":2},"mdinhtml":{},"ace":{},"emphasize":{},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"livereload":{}};
+    gitbook.start(config);
+});
+</script>
+
+        <!-- body:end -->
+    </body>
+    <!-- End of book 道缘随记 -->
+</html>
