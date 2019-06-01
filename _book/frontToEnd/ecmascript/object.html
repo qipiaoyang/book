@@ -8,7 +8,7 @@
         <title>js里面关于object的方法 | 道缘随记</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="generator" content="GitBook 2.6.9">
         
         
         <meta name="HandheldFriendly" content="true"/>
@@ -53,7 +53,7 @@
         
     
     
-    <link rel="next" href="../../frontToEnd/git/index.html" />
+    <link rel="next" href="../../frontToEnd/ecmascript/for.html" />
     
     
     <link rel="prev" href="../../frontToEnd/ecmascript/undefinedNull.html" />
@@ -69,7 +69,7 @@
         data-chapter-title="js里面关于object的方法"
         data-filepath="frontToEnd/ecmascript/object.md"
         data-basepath="../.."
-        data-revision="Tue Jun 05 2018 02:21:21 GMT+0800 (中国标准时间)"
+        data-revision="Sun Jun 02 2019 00:37:21 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -613,6 +613,21 @@
             
         </li>
     
+        <li class="chapter " data-level="1.4.4" data-path="frontToEnd/ecmascript/for.html">
+            
+                
+                    <a href="../../frontToEnd/ecmascript/for.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.4.</b>
+                        
+                        for循环遍历优化的几种方法
+                    </a>
+            
+            
+        </li>
+    
 
             </ul>
             
@@ -908,16 +923,82 @@
             
         </li>
     
-        <li class="chapter " data-level="5" data-path="frontToEnd/markdown.html">
+        <li class="chapter " data-level="5" data-path="architecture/index.html">
+            
+                
+                    <a href="../../architecture/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        架构设计
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="architecture/standardLogin.html">
+            
+                
+                    <a href="../../architecture/standardLogin.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        登陆系统
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="frontToEnd/markdown.html">
             
                 
                     <a href="../../frontToEnd/markdown.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>5.</b>
+                            <b>6.</b>
                         
                         markdown基础语法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="frontToEnd/ssh.html">
+            
+                
+                    <a href="../../frontToEnd/ssh.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        翻墙细则
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="cultivate/index.html">
+            
+                
+                    <a href="../../cultivate/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        修身
                     </a>
             
             
@@ -957,13 +1038,36 @@
                     <section class="normal" id="section-">
                     
                         <h3 id="object&#x65B9;&#x6CD5;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;">object&#x65B9;&#x6CD5;&#x5B66;&#x4E60;&#x7B14;&#x8BB0;</h3>
-<h4 id="1-objectassign-&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x5C06;&#x6240;&#x6709;&#x53EF;&#x679A;&#x4E3E;&#x5C5E;&#x6027;&#x7684;&#x503C;&#x4ECE;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x6E90;&#x5BF9;&#x8C61;&#x590D;&#x5236;&#x5230;&#x76EE;&#x6807;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD4;&#x56DE;&#x76EE;&#x6807;&#x5BF9;&#x8C61;">1. Object.assign() &#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x5C06;&#x6240;&#x6709;&#x53EF;&#x679A;&#x4E3E;&#x5C5E;&#x6027;&#x7684;&#x503C;&#x4ECE;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x6E90;&#x5BF9;&#x8C61;&#x590D;&#x5236;&#x5230;&#x76EE;&#x6807;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD4;&#x56DE;&#x76EE;&#x6807;&#x5BF9;&#x8C61;</h4>
+<h4 id="1-objectassign-parma1-parma2-parma3-&#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x5C06;&#x6240;&#x6709;&#x53EF;&#x679A;&#x4E3E;&#x5C5E;&#x6027;&#x7684;&#x503C;&#x4ECE;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x6E90;&#x5BF9;&#x8C61;&#x590D;&#x5236;&#x5230;&#x76EE;&#x6807;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD4;&#x56DE;&#x76EE;&#x6807;&#x5BF9;&#x8C61;">1. Object.assign( parma1, parma2, parma3...) &#x65B9;&#x6CD5;&#x7528;&#x4E8E;&#x5C06;&#x6240;&#x6709;<strong>&#x53EF;&#x679A;&#x4E3E;&#x5C5E;&#x6027;</strong>&#x7684;&#x503C;&#x4ECE;&#x4E00;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x6E90;&#x5BF9;&#x8C61;&#x590D;&#x5236;&#x5230;&#x76EE;&#x6807;&#x5BF9;&#x8C61;&#xFF0C;&#x8FD4;&#x56DE;&#x76EE;&#x6807;&#x5BF9;&#x8C61;</h4>
+<p><strong>Object.assign()&#x662F;&#x6D45;&#x62F7;&#x8D1D;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x6DF1;&#x62F7;&#x8D1D;&#x3002;</strong></p>
+<ul>
+<li>&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x76EE;&#x6807;&#x5BF9;&#x8C61;</li>
+<li>&#x540E;&#x9762;&#x7684;&#x53C2;&#x6570;&#x90FD;&#x662F;&#x6E90;&#x5BF9;&#x8C61;</li>
+</ul>
 <pre><code>var obj = {
     a: 1,
     b: 2,
 };
 var obj1 = Object.assign({c:4},obj);
 console.log(obj1); // {a:1,b:2,c:4}  &#x5C06;obj&#x5185;&#x5BB9;&#x590D;&#x5236;&#x5230;&#x5BF9;&#x8C61;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x7684;&#x5BF9;&#x8C61;&#x91CC;&#x9762;
+const obj2 = { a: 2 };
+Object.assign( obj2 ) === obj2; // true
+</code></pre><h4 id="2-objectis-&#x65B9;&#x6CD5;&#x7528;&#x6765;&#x6BD4;&#x8F83;&#x4E24;&#x4E2A;&#x503C;&#x662F;&#x5426;&#x4E25;&#x683C;&#x76F8;&#x7B49;-&#x4E0E;-&#x4E25;&#x683C;&#x8FD0;&#x7B97;&#x7B26;---&#x7684;&#x884C;&#x4E3A;&#x57FA;&#x672C;&#x4E00;&#x81F4;&#x3002;&#x8FD9;&#x662F;es6&#x63D0;&#x51FA;&#x7684;-samevalue-eqality-&#x7B97;&#x6CD5;">2. Object.is() &#x65B9;&#x6CD5;&#x7528;&#x6765;&#x6BD4;&#x8F83;&#x4E24;&#x4E2A;&#x503C;&#x662F;&#x5426;&#x4E25;&#x683C;&#x76F8;&#x7B49; &#x4E0E; &#x4E25;&#x683C;&#x8FD0;&#x7B97;&#x7B26; ( === )&#x7684;&#x884C;&#x4E3A;&#x57FA;&#x672C;&#x4E00;&#x81F4;&#x3002;&#x8FD9;&#x662F;ES6&#x63D0;&#x51FA;&#x7684; &quot;Same-value eqality&quot; &#x7B97;&#x6CD5;</h4>
+<pre><code>Object.is( &apos;foo&apos;, &apos;foo&apos; );// true
+Object.is( {}, {} ); // false
+</code></pre><h4 id="3objectgetownpropertydescriptor-&#x53EF;&#x83B7;&#x5F97;&#x63CF;&#x8FF0;&#x5BF9;&#x8C61;&#x7684;&#x6BCF;&#x4E2A;&#x5C5E;&#x6027;&#x5BF9;&#x5E94;&#x7684;&#x63CF;&#x8FF0;&#x5BF9;&#x8C61;">3.Object.getOwnPropertyDescriptor() &#x53EF;&#x83B7;&#x5F97;&#x63CF;&#x8FF0;&#x5BF9;&#x8C61;&#x7684;&#x6BCF;&#x4E2A;&#x5C5E;&#x6027;&#x5BF9;&#x5E94;&#x7684;&#x63CF;&#x8FF0;&#x5BF9;&#x8C61;</h4>
+<pre><code>let obj = { foo: 123 };
+Object.getOwnPropertyDescriptor( obj, &quot;foo&quot; );  // {value: 123, writable: true, enumerable: true, configurable: true}
+</code></pre><p>&#x76EE;&#x524D;&#x6709;4&#x4E2A;&#x5C5E;&#x6027;&#x4F1A;&#x5FFD;&#x7565;enumerable&#x4E3A;false&#x7684;&#x5C5E;&#x6027;</p>
+<ul>
+<li>for...in &#x5FAA;&#x73AF;: &#x53EA;&#x904D;&#x5386;&#x5BF9;&#x8C61;&#x81EA;&#x8EAB;&#x7684;&#x548C;<strong>&#x7EE7;&#x627F;&#x7684;</strong>&#x53EF;&#x679A;&#x4E3E;&#x5C5E;&#x6027;</li>
+<li>Object.keys(): &#x8FD4;&#x56DE;&#x5BF9;&#x8C61;&#x81EA;&#x8EAB;&#x7684;&#x6240;&#x6709;&#x53EF;&#x679A;&#x4E3E;&#x7684;&#x5C5E;&#x6027;&#x7684;&#x952E;&#x540D;</li>
+<li>JSON.stringify(): &#x53EA;&#x4E32;&#x884C;&#x5316;&#x81EA;&#x8EAB;&#x7684;&#x53EF;&#x679A;&#x4E3E;&#x5C5E;&#x6027;</li>
+<li>Object.assign(): &#x5FFD;&#x7565;enumerable&#x5C5E;&#x6027;&#x4E3A;false&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x53EA;&#x62F7;&#x8D1D;&#x5BF9;&#x8C61;&#x81EA;&#x8EAB;&#x7684;&#x53EF;&#x679A;&#x4E3E;&#x5C5E;&#x6027;</li>
+</ul>
+<p><strong>ES6&#x89C4;&#x5B9A;&#xFF0C;&#x6240;&#x6709;Class&#x7684;&#x539F;&#x578B;&#x7684;&#x65B9;&#x6CD5;&#x90FD;&#x662F;&#x4E0D;&#x53EF;&#x679A;&#x4E3E;&#x7684;</strong>.&#x6240;&#x4EE5;&#x5927;&#x591A;&#x65F6;&#x5019;&#x5C3D;&#x91CF;&#x4E0D;&#x8981;&#x7528;for...in&#x6765;&#x5FAA;&#x73AF;&#xFF0C;&#x800C;&#x7528;Object.keys()&#x6765;&#x5FAA;&#x73AF;</p>
+<h4 id="objectfreeze&#x53EF;&#x4EE5;&#x51BB;&#x7ED3;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x51BB;&#x7ED3;&#x6307;&#x7684;&#x662F;&#x4E0D;&#x80FD;&#x7ED9;&#x51BB;&#x7ED3;&#x5BF9;&#x8C61;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;&#x6216;&#x8005;&#x4FEE;&#x6539;&#x5176;&#x5DF2;&#x6709;&#x5C5E;&#x6027;&#x503C;&#xFF0C;&#x4E5F;&#x4E0D;&#x80FD;&#x5220;&#x9664;&#x5DF2;&#x6709;&#x5C5E;&#x6027;&#xFF0C;&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x88AB;&#x51BB;&#x7ED3;&#x7684;&#x5BF9;&#x8C61;&#x3002;">Object.freeze()&#x53EF;&#x4EE5;&#x51BB;&#x7ED3;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#xFF0C;&#x51BB;&#x7ED3;&#x6307;&#x7684;&#x662F;&#x4E0D;&#x80FD;&#x7ED9;&#x51BB;&#x7ED3;&#x5BF9;&#x8C61;&#x6DFB;&#x52A0;&#x5C5E;&#x6027;&#x6216;&#x8005;&#x4FEE;&#x6539;&#x5176;&#x5DF2;&#x6709;&#x5C5E;&#x6027;&#x503C;&#xFF0C;&#x4E5F;&#x4E0D;&#x80FD;&#x5220;&#x9664;&#x5DF2;&#x6709;&#x5C5E;&#x6027;&#xFF0C;&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x88AB;&#x51BB;&#x7ED3;&#x7684;&#x5BF9;&#x8C61;&#x3002;</h4>
+<pre><code>let emptyObj = Object.freeze({}); // &#x901A;&#x5E38;&#x7528;&#x6765;&#x5F53;&#x4F5C;&#x5E38;&#x91CF;&#x6765;&#x5904;&#x7406;
 </code></pre>
                     
                     </section>
@@ -977,7 +1081,7 @@ console.log(obj1); // {a:1,b:2,c:4}  &#x5C06;obj&#x5185;&#x5BB9;&#x590D;&#x5236;
         <a href="../../frontToEnd/ecmascript/undefinedNull.html" class="navigation navigation-prev " aria-label="Previous page: undefined与null的故事"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../frontToEnd/git/index.html" class="navigation navigation-next " aria-label="Next page: git相关文档"><i class="fa fa-angle-right"></i></a>
+        <a href="../../frontToEnd/ecmascript/for.html" class="navigation navigation-next " aria-label="Next page: for循环遍历优化的几种方法"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>

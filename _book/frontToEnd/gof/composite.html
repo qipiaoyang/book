@@ -8,7 +8,7 @@
         <title>组合模式 | 道缘随记</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="generator" content="GitBook 2.6.9">
         
         
         <meta name="HandheldFriendly" content="true"/>
@@ -69,7 +69,7 @@
         data-chapter-title="组合模式"
         data-filepath="frontToEnd/gof/composite.md"
         data-basepath="../.."
-        data-revision="Tue Jun 05 2018 02:21:21 GMT+0800 (中国标准时间)"
+        data-revision="Sun Jun 02 2019 00:37:21 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -613,6 +613,21 @@
             
         </li>
     
+        <li class="chapter " data-level="1.4.4" data-path="frontToEnd/ecmascript/for.html">
+            
+                
+                    <a href="../../frontToEnd/ecmascript/for.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.4.</b>
+                        
+                        for循环遍历优化的几种方法
+                    </a>
+            
+            
+        </li>
+    
 
             </ul>
             
@@ -908,16 +923,82 @@
             
         </li>
     
-        <li class="chapter " data-level="5" data-path="frontToEnd/markdown.html">
+        <li class="chapter " data-level="5" data-path="architecture/index.html">
+            
+                
+                    <a href="../../architecture/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        架构设计
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="architecture/standardLogin.html">
+            
+                
+                    <a href="../../architecture/standardLogin.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        登陆系统
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="frontToEnd/markdown.html">
             
                 
                     <a href="../../frontToEnd/markdown.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>5.</b>
+                            <b>6.</b>
                         
                         markdown基础语法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="frontToEnd/ssh.html">
+            
+                
+                    <a href="../../frontToEnd/ssh.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        翻墙细则
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="cultivate/index.html">
+            
+                
+                    <a href="../../cultivate/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        修身
                     </a>
             
             
@@ -957,6 +1038,61 @@
                     <section class="normal" id="section-">
                     
                         <h3 id="&#x7EC4;&#x5408;&#x6A21;&#x5F0F;">&#x7EC4;&#x5408;&#x6A21;&#x5F0F;</h3>
+<p>&#x7EC4;&#x5408;&#x6A21;&#x5F0F;: &#x5C06;&#x5BF9;&#x8C61;&#x7EC4;&#x5408;&#x6210;&#x6811;&#x5F62;&#x7ED3;&#x6784;&#xFF0C;&#x4EE5;&#x8868;&#x793A;&#x201C;&#x90E8;&#x5206;&#x2014;&#x2014;&#x6574;&#x4F53;&#x201D;&#x7684;&#x5C42;&#x6B21;&#x7ED3;&#x6784;&#xFF0C;&#x800C;&#x4E14;&#x8FD8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5BF9;&#x8C61;&#x7684;&#x591A;&#x6001;&#x6027;&#x8868;&#x73B0;
+&#x4F7F;&#x5F97;&#x5355;&#x4E2A;&#x5BF9;&#x8C61;&#x4E0E;&#x7EC4;&#x5408;&#x5BF9;&#x8C61;&#x7684;&#x4F7F;&#x7528;&#x5177;&#x6709;&#x4E00;&#x81F4;&#x6027;&#x3002;</p>
+<h4 id="&#x56DE;&#x987E;&#x5B8F;&#x547D;&#x4EE4;">&#x56DE;&#x987E;&#x5B8F;&#x547D;&#x4EE4;</h4>
+<p>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x5B8F;&#x547D;&#x4EE4;&#x662F;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x628A;&#x5BF9;&#x5E94;&#x7684;&#x5B50;&#x547D;&#x4EE4;&#x6536;&#x96C6;&#x8D77;&#x6765;&#xFF0C;&#x7136;&#x540E;&#x8FDB;&#x884C;&#x6267;&#x884C;&#x3002;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x4F1A;&#x53D1;&#x73B0;&#x5F62;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x6811;&#x7684;&#x5F62;&#x72B6;&#x3002;</p>
+<p><img src="../../images/composite.png" alt="&#x7EC4;&#x5408;&#x5BF9;&#x8C61;&#x6F14;&#x793A;&#x56FE;"></p>
+<pre><code>var command1 = {
+        excute: function() {
+            console.log(&quot;&#x6211;&#x662F;&#x547D;&#x4EE4;&#x7B2C;&#x4E8C;&#x5C42;1&quot;);
+        }
+    };
+    var command2 = {
+        excute: function() {
+            console.log(&quot;&#x6211;&#x662F;&#x547D;&#x4EE4;&#x7B2C;&#x4E8C;&#x5C42;2&quot;);
+        }
+    };
+    var command3 = {
+        excute: function() {
+            console.log(&quot;&#x6211;&#x662F;&#x547D;&#x4EE4;&#x7B2C;&#x4E8C;&#x5C42;3&quot;);
+        }
+    };
+    var command4 = {
+        excute: function() {
+            console.log(&quot;&#x6211;&#x662F;&#x547D;&#x4EE4;&#x7B2C;&#x4E00;&#x5C42;1&quot;);
+        }
+    };
+    var command5 = {
+        excute: function() {
+            console.log(&quot;&#x6211;&#x662F;&#x547D;&#x4EE4;&#x7B2C;&#x4E00;&#x5C42;2&quot;);
+        }
+    };
+    var MacroCommand = function() {
+        return {
+            commandList:[],
+            add: function(command) {
+                this.commandList.push(command);
+            },
+            excute: function() {
+                for(var i = 0, len; len = this.commandList[ i++ ];) {
+                    len.excute();
+                }
+            }
+        }
+    };
+    var MacroCommand1 = MacroCommand();
+    MacroCommand1.add(command1);
+    MacroCommand1.add(command2);
+    MacroCommand1.add(command3);
+    var MacroCommand2 = MacroCommand();
+    MacroCommand2.add(MacroCommand1);
+    MacroCommand2.add(command4);
+    MacroCommand2.add(command5);
+
+    MacroCommand2.excute(); // &#x6211;&#x662F;&#x547D;&#x4EE4;&#x7B2C;&#x4E8C;&#x5C42;1 , &#x6211;&#x662F;&#x547D;&#x4EE4;&#x7B2C;&#x4E8C;&#x5C42;2 ,&#x6211;&#x662F;&#x547D;&#x4EE4;&#x7B2C;&#x4E8C;&#x5C42;3, &#x6211;&#x662F;&#x547D;&#x4EE4;&#x7B2C;&#x4E00;&#x5C42;1, &#x6211;&#x662F;&#x547D;&#x4EE4;&#x7B2C;&#x4E00;&#x5C42;2
+</code></pre><p>&#x4ECE;&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x6765;&#xFF0C;&#x7EC4;&#x5408;&#x6A21;&#x5F0F;&#x662F;&#x5C06;&#x5BF9;&#x8C61;&#x7EC4;&#x5408;&#x6210;&#x6811;&#x5F62;&#x7ED3;&#x6784;&#xFF0C;&#x7136;&#x540E;&#x8BF7;&#x6C42;&#x5728;&#x6811;&#x4E2D;&#x7684;&#x4F20;&#x9012;&#x8FC7;&#x7A0B;&#xFF0C;&#x603B;&#x662F;&#x9075;&#x5FAA;&#x4E00;&#x79CD;&#x903B;&#x8F91;(&#x65B9;&#x4FBF;&#x9012;&#x5F52;);
+&#x7136;&#x540E;&#x4E0A;&#x9762;&#x4EE3;&#x7801;&#x7684;&#x6267;&#x884C;&#x987A;&#x5E8F;&#x4E0E;&#x4E8C;&#x53C9;&#x6811;&#x7684;&#x6267;&#x884C;&#x987A;&#x5E8F;&#x5176;&#x5B9E;&#x662F;&#x4E0D;&#x4E00;&#x6837;&#x7684;&#x3002;&#x7EC4;&#x5408;&#x6A21;&#x5F0F;&#x7684;&#x6267;&#x884C;&#x987A;&#x5E8F;&#x662F;&#x4ECE;<strong>&#x4E0A;&#x5F80;&#x4E0B;&#xFF0C;&#x4ECE;&#x5DE6;&#x5F80;&#x53F3;</strong>&#x7684;&#x4E00;&#x4E2A;&#x6267;&#x884C;&#x987A;&#x5E8F;&#x3002;</p>
 
                     
                     </section>

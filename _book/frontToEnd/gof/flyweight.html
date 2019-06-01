@@ -8,7 +8,7 @@
         <title>享元模式 | 道缘随记</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="generator" content="GitBook 2.6.9">
         
         
         <meta name="HandheldFriendly" content="true"/>
@@ -69,7 +69,7 @@
         data-chapter-title="享元模式"
         data-filepath="frontToEnd/gof/flyweight.md"
         data-basepath="../.."
-        data-revision="Tue Jun 05 2018 02:21:21 GMT+0800 (中国标准时间)"
+        data-revision="Sun Jun 02 2019 00:37:21 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -613,6 +613,21 @@
             
         </li>
     
+        <li class="chapter " data-level="1.4.4" data-path="frontToEnd/ecmascript/for.html">
+            
+                
+                    <a href="../../frontToEnd/ecmascript/for.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.4.</b>
+                        
+                        for循环遍历优化的几种方法
+                    </a>
+            
+            
+        </li>
+    
 
             </ul>
             
@@ -908,16 +923,82 @@
             
         </li>
     
-        <li class="chapter " data-level="5" data-path="frontToEnd/markdown.html">
+        <li class="chapter " data-level="5" data-path="architecture/index.html">
+            
+                
+                    <a href="../../architecture/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        架构设计
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="architecture/standardLogin.html">
+            
+                
+                    <a href="../../architecture/standardLogin.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        登陆系统
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="frontToEnd/markdown.html">
             
                 
                     <a href="../../frontToEnd/markdown.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>5.</b>
+                            <b>6.</b>
                         
                         markdown基础语法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="frontToEnd/ssh.html">
+            
+                
+                    <a href="../../frontToEnd/ssh.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        翻墙细则
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="cultivate/index.html">
+            
+                
+                    <a href="../../cultivate/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        修身
                     </a>
             
             
@@ -957,7 +1038,69 @@
                     <section class="normal" id="section-">
                     
                         <h3 id="&#x4EAB;&#x5143;&#x6A21;&#x5F0F;">&#x4EAB;&#x5143;&#x6A21;&#x5F0F;</h3>
-
+<p>&#x4EAB;&#x5143;&#x6A21;&#x5F0F;&#x662F;&#x4E00;&#x79CD;&#x7528;&#x4E8E;&#x6027;&#x80FD;&#x4F18;&#x5316;&#x7684;&#x6A21;&#x5F0F;&#xFF0C;&#x4EAB;&#x5143;&#x6A21;&#x5F0F;&#x7684;&#x6838;&#x5FC3;&#x662F;&#x8FD0;&#x7528;<strong>&#x5171;&#x4EAB;&#x6280;&#x672F;</strong>&#x6765;&#x6709;&#x6548;&#x652F;&#x6301;&#x5927;&#x91CF;&#x7EC6;&#x7C92;&#x5EA6;&#x7684;&#x5BF9;&#x8C61;&#x3002;</p>
+<p>&#x9996;&#x5148;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E00;&#x4E2A;&#x4EAB;&#x5143;&#x6A21;&#x5F0F;&#x6700;&#x6807;&#x51C6;&#x7684;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#x3002;</p>
+<pre><code>//&#x4EAB;&#x5143;&#x6A21;&#x5F0F;
+var Model = function(sex) {
+    this.sex = sex;
+};
+Model.prototype.takephoto = function() {
+    console.log(&apos;sex&apos; + this.sex + &apos;underwear&apos; + this.underwear);
+} 
+var maleModel = new Model(&apos;male&apos;),
+        femaleModel = new Model(&apos;female&apos;);
+for(var i = 0; i &lt;=50; i++) {
+    maleModel.underwear = &apos;underwear&apos; + i;
+    maleModel.takephoto();
+}        
+for(var i = 0; i &lt;=50; i++) {
+    femaleModel.underwear = &apos;underwear&apos; + i;
+    femaleModel.takephoto();
+}
+//&#x975E;&#x4EAB;&#x5143;&#x6A21;&#x5F0F;
+var Model = function(sex,underwear) {
+    this.sex = sex;
+    this.underwear = underwear;
+};
+Model.prototype.takephoto = function() {
+    console.log(&apos;sex&apos; + this.sex + &apos;underwear&apos; + this.underwear);
+}
+for(var i = 0; i &lt;=50; i++) {
+    var maleModel = new Model(&apos;male&apos;,&apos;underwear&apos; + i);
+    maleModel.takephoto();
+}
+for(var i = 0; i &lt;=50; i++) {
+    var femaleModel = new Model(&apos;female&apos;,&apos;underwear&apos; + i);
+    femaleModel.takephoto();
+}
+</code></pre><p>&#x4E0A;&#x9762;&#x7684;&#x6848;&#x4F8B;&#x662F;&#x4E00;&#x4E2A;&#x7ED9;50&#x4E2A;&#x7537;&#x751F;&#x548C;50&#x4E2A;&#x5973;&#x751F;underwear&#xFF0C;&#x7136;&#x540E;takephoto&#x7684;&#x4E00;&#x4E2A;&#x8FC7;&#x7A0B;&#x3002;&#x6709;&#x4E24;&#x79CD;&#x6A21;&#x5F0F;&#x3002;&#x6709;&#x5FC3;&#x7684;&#x540C;&#x5B66;&#x4F1A;&#x5173;&#x6CE8;&#x5230;
+&#x975E;&#x4EAB;&#x5143;&#x6A21;&#x5F0F;&#x7684;&#x7F3A;&#x70B9;&#x5728;&#x4E8E;new&#x4E86;&#x5F88;&#x591A;&#x5BF9;&#x8C61;&#xFF0C;&#x9020;&#x6210;&#x6D6A;&#x8D39;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x5E76;&#x4E0D;&#x662F;&#x6838;&#x5FC3;&#x3002;</p>
+<p>&#x6211;&#x4E2A;&#x4EBA;&#x7406;&#x89E3;&#x7684;&#x4EAB;&#x5143;&#x6A21;&#x5F0F;&#x7684;&#x6838;&#x5FC3;&#x5728;&#x4E8E;<strong>&#x627E;&#x51FA;&#x5171;&#x4EAB;&#x7684;&#x5143;&#x7D20;</strong>&#xFF0C;&#x79F0;&#x4E4B;&#x4E3A;&#x4EAB;&#x5143;&#xFF0C;&#x627E;&#x51FA;&#x5171;&#x540C;&#x70B9;&#xFF0C;&#x805A;&#x5408;&#x8D77;&#x6765;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x8BF4;&#x8BF4;&#x4EAB;&#x5143;&#x6A21;&#x5F0F;&#x7684;&#x51E0;&#x4E2A;&#x5173;&#x952E;&#x70B9;&#x3002;</p>
+<ul>
+<li>&#x4EAB;&#x5143;&#x6A21;&#x5F0F;&#x901A;&#x5E38;&#x628A;&#x5BF9;&#x8C61;&#x7684;&#x5C5E;&#x6027;&#x5206;&#x4E3A;&#x5185;&#x90E8;&#x72B6;&#x6001;&#x548C;&#x5916;&#x90E8;&#x72B6;&#x6001;&#xFF0C;&#x5185;&#x90E8;&#x72B6;&#x6001;&#x662F;&#x5171;&#x4EAB;&#x7684;&#x90E8;&#x5206;&#xFF0C;&#x5916;&#x90E8;&#x72B6;&#x6001;&#x65F6;&#x53D8;&#x5316;&#x7684;&#x90E8;&#x5206;</li>
+<li>&#x5185;&#x90E8;&#x72B6;&#x6001;&#x5B58;&#x50A8;&#x5728;&#x5BF9;&#x8C61;&#x5185;&#x90E8;&#xFF0C;&#x53EF;&#x4EE5;&#x88AB;&#x5171;&#x4EAB;</li>
+<li>&#x5185;&#x90E8;&#x72B6;&#x6001;&#x4E00;&#x822C;&#x4E0D;&#x4F1A;&#x53D1;&#x751F;&#x6539;&#x53D8;</li>
+<li>&#x5916;&#x90E8;&#x72B6;&#x6001;&#x53D6;&#x51B3;&#x4E8E;&#x5177;&#x4F53;&#x7684;&#x573A;&#x666F;&#xFF0C;&#x5E76;&#x6839;&#x636E;&#x573A;&#x666F;&#x800C;&#x53D8;&#x5316;&#xFF0C;&#x5916;&#x90E8;&#x72B6;&#x6001;&#x4E0D;&#x80FD;&#x88AB;&#x5171;&#x4EAB;</li>
+</ul>
+<h4 id="&#x5BF9;&#x8C61;&#x6C60;&#x7684;&#x5B9E;&#x73B0;">&#x5BF9;&#x8C61;&#x6C60;&#x7684;&#x5B9E;&#x73B0;</h4>
+<p>&#x9996;&#x5148;&#x4E86;&#x89E3;&#x4E00;&#x4E0B;&#x5BF9;&#x8C61;&#x6C60;&#x7684;&#x5B9A;&#x4E49;&#xFF0C;&#x5BF9;&#x8C61;&#x6C60;&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;&#x88C5;&#x8F7D;&#x7A7A;&#x95F2;&#x5BF9;&#x8C61;&#x7684;&#x6C60;&#x5B50;&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x5BF9;&#x8C61;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E0D;&#x662F;&#x76F4;&#x63A5;new&#xFF0C;&#x800C;&#x662F;&#x8F6C;&#x4ECE;&#x5BF9;&#x8C61;&#x6C60;&#x91CC;&#x9762;&#x83B7;&#x53D6;&#x3002;
+&#x5982;&#x679C;&#x5BF9;&#x8C61;&#x6C60;&#x91CC;&#x6CA1;&#x6709;&#x7A7A;&#x95F2;&#x5BF9;&#x8C61;&#xFF0C;&#x5219;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x5BF9;&#x8C61;&#xFF0C;&#x5F53;&#x83B7;&#x53D6;&#x51FA;&#x7684;&#x5BF9;&#x8C61;&#x5B8C;&#x6210;&#x5B83;&#x7684;&#x804C;&#x8D23;&#x4E4B;&#x540E;&#xFF0C;&#x518D;&#x8FDB;&#x5165;&#x6C60;&#x5B50;&#x7B49;&#x5F85;&#x88AB;&#x4E0B;&#x6B21;&#x83B7;&#x53D6;&#x3002;</p>
+<p>&#x5F88;&#x7B80;&#x5355;&#x7684;&#x7406;&#x89E3;&#x5C31;&#x662F;&#xFF0C;&#x5BB6;&#x91CC;&#x5982;&#x679C;&#x6709;&#x96F6;&#x98DF;&#xFF0C;&#x76F4;&#x63A5;&#x62FF;&#xFF0C;&#x6CA1;&#x6709;&#x5C31;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#xFF0C;&#x5C11;&#x4E86;&#x518D;&#x53BB;&#x4E70;&#x4E00;&#x4E2A;&#x3002;&#x3002;&#x3002;</p>
+<p>&#x5BF9;&#x8C61;&#x6C60;&#x7684;&#x901A;&#x7528;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>var objectFactory = function(createObj) {
+    var objList = [];
+    return {
+        create: function(){
+            var obj = objList.length === 0 ? createObj.apply(this,arguments) : objList.shift();
+            return obj;
+        },
+        recover: function(objFn) {//&#x5BF9;&#x8C61;&#x6C60;&#x56DE;&#x6536;&#x5BF9;&#x8C61;
+            objList.push(objFn);    
+        }
+    }
+}
+</code></pre>
                     
                     </section>
                 

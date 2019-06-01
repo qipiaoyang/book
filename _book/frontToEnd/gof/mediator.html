@@ -8,7 +8,7 @@
         <title>中介者模式 | 道缘随记</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
-        <meta name="generator" content="GitBook 2.6.7">
+        <meta name="generator" content="GitBook 2.6.9">
         
         
         <meta name="HandheldFriendly" content="true"/>
@@ -69,7 +69,7 @@
         data-chapter-title="中介者模式"
         data-filepath="frontToEnd/gof/mediator.md"
         data-basepath="../.."
-        data-revision="Tue Jun 05 2018 02:21:21 GMT+0800 (中国标准时间)"
+        data-revision="Sun Jun 02 2019 00:37:21 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -613,6 +613,21 @@
             
         </li>
     
+        <li class="chapter " data-level="1.4.4" data-path="frontToEnd/ecmascript/for.html">
+            
+                
+                    <a href="../../frontToEnd/ecmascript/for.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.4.</b>
+                        
+                        for循环遍历优化的几种方法
+                    </a>
+            
+            
+        </li>
+    
 
             </ul>
             
@@ -908,16 +923,82 @@
             
         </li>
     
-        <li class="chapter " data-level="5" data-path="frontToEnd/markdown.html">
+        <li class="chapter " data-level="5" data-path="architecture/index.html">
+            
+                
+                    <a href="../../architecture/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        架构设计
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1" data-path="architecture/standardLogin.html">
+            
+                
+                    <a href="../../architecture/standardLogin.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.1.</b>
+                        
+                        登陆系统
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="frontToEnd/markdown.html">
             
                 
                     <a href="../../frontToEnd/markdown.html">
                 
                         <i class="fa fa-check"></i>
                         
-                            <b>5.</b>
+                            <b>6.</b>
                         
                         markdown基础语法
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="frontToEnd/ssh.html">
+            
+                
+                    <a href="../../frontToEnd/ssh.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        翻墙细则
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="cultivate/index.html">
+            
+                
+                    <a href="../../cultivate/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        修身
                     </a>
             
             
@@ -957,6 +1038,62 @@
                     <section class="normal" id="section-">
                     
                         <h3 id="&#x4E2D;&#x4ECB;&#x8005;&#x6A21;&#x5F0F;">&#x4E2D;&#x4ECB;&#x8005;&#x6A21;&#x5F0F;</h3>
+<p>&#x9762;&#x5411;&#x5BF9;&#x8C61;&#x8BBE;&#x8BA1;&#x9F13;&#x52B1;&#x5C06;&#x884C;&#x4E3A;&#x5206;&#x5E03;&#x5230;&#x5404;&#x4E2A;&#x5BF9;&#x8C61;&#x4E4B;&#x4E2D;&#xFF0C;&#x4F46;&#x662F;&#x5BF9;&#x8C61;&#x4E0E;&#x5BF9;&#x8C61;&#x4E4B;&#x95F4;&#x7ECF;&#x5E38;&#x6709;&#x6216;&#x591A;&#x6216;&#x5C11;&#x7684;&#x8054;&#x7CFB;&#xFF0C;&#x8FD9;&#x6837;&#x7ECF;&#x5E38;&#x4F1A;&#x4EA7;&#x751F;&#x5F88;&#x590D;&#x6742;&#x7684;
+&#x5173;&#x7CFB;&#x3002;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x5982;&#x679C;&#x6709;&#x4E00;&#x4E2A;&#x4E2D;&#x592E;&#x8C03;&#x5EA6;&#x7CFB;&#x7EDF;&#x6765;&#x8C03;&#x5EA6;&#x5C31;&#x5F88;&#x8212;&#x670D;&#x4E86;&#x3002;</p>
+<p>&#x4E2D;&#x4ECB;&#x8005;&#x6A21;&#x5F0F;&#x7684;&#x4F5C;&#x7528;&#x5C31;&#x662F;&#x89E3;&#x9664;&#x5BF9;&#x8C61;&#x4E0E;&#x5BF9;&#x8C61;&#x4E4B;&#x95F4;&#x7684;&#x7D27;&#x8026;&#x5408;&#x5173;&#x7CFB;&#xFF0C;&#x628A;<strong>&#x591A;&#x5BF9;&#x591A;&#x7684;&#x5173;&#x7CFB;&#x53D8;&#x6210;&#x4E00;&#x5BF9;&#x591A;&#x7684;&#x5173;&#x7CFB;</strong>&#x3002;</p>
+<pre><code>//&#x521B;&#x5EFA;&#x73A9;&#x5BB6;
+function player(name,teamColor) {
+    this.name = name;
+    this.teamColor = teamColor;
+    this.state = &apos;alive&apos;;
+}
+var playerFactory = function(name,teamColor) {
+    var newPlayer = new player(name,teamColor);
+    playerDiretor.reciveMessage(&quot;addPlayer&quot;,newPlayer);
+    return newPlayer;
+}
+// &#x79FB;&#x9664;&#x73A9;&#x5BB6;
+player.prototype.remove = function() {
+    playerDiretor.reciveMessage(&apos;removePlayer&apos;, this);//&#x7ED9;&#x4E2D;&#x4ECB;&#x8005;&#x53D1;&#x6D88;&#x606F;&#xFF0C;&#x8FD9;&#x4F4D;&#x73A9;&#x5BB6;&#x5DF2;&#x7ECF;&#x6B7B;&#x4EA1;
+}
+var playerDiretor = (function() {
+    var players = {}, // &#x4FDD;&#x5B58;&#x6240;&#x6709;&#x73A9;&#x5BB6;
+        operations = {};
+    // &#x65B0;&#x589E;&#x4E00;&#x4E2A;&#x73A9;&#x5BB6;&#x65B9;&#x6CD5;
+    operations.addPlayer = function(player) {
+        var teamColor = player.teamColor;
+        players[teamColor] = players[teamColor] || [];
+        players[teamColor].push(player);
+    }
+    // &#x79FB;&#x9664;&#x4E00;&#x4E2A;&#x73A9;&#x5BB6;
+    operations.removePlayer = function(player) {
+        var teamColor = player.teamColor,
+            teamPlayers = players[teamColor] || [];
+        for(var i = teamPlayers.length - 1; i &gt;= 0; i--) {
+            if(teamPlayers[i] === player) {
+                teamPlayers.splice(i,1);
+            }
+        }
+    }
+    var reciveMessage = function(){
+        var message = Array.prototype.shift.call(arguments);
+        operations[message].apply(this,arguments);
+    }
+    return {
+        reciveMessage: reciveMessage
+    }
+})();
+var xiaohong = playerFactory(&quot;xiaohong&quot;,&quot;blue&quot;); //&#x7ED9;blue&#x6218;&#x961F;&#x65B0;&#x589E;xiaohong
+var xiaolan = playerFactory(&quot;xiaolan&quot;,&quot;red&quot;); //&#x7ED9;red&#x6218;&#x961F;&#x65B0;&#x589E;xiaolan
+var xiaolv = playerFactory(&quot;xiaolv&quot;,&quot;blue&quot;);//&#x7ED9;blue&#x6218;&#x961F;&#x65B0;&#x589E;xiaolv
+xiaolv.remove();//&#x79FB;&#x9664;blue&#x6218;&#x961F;&#x7684;xiaolv
+</code></pre><p>&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x5C31;&#x662F;&#x628A;&#x6DFB;&#x52A0;&#x73A9;&#x5BB6;&#xFF0C;&#x79FB;&#x9664;&#x73A9;&#x5BB6;&#x7684;&#x529F;&#x80FD;&#x5168;&#x90E8;&#x4EA4;&#x7ED9;&#x4E2D;&#x4ECB;&#x8005;playerDiretor&#x53BB;&#x5904;&#x7406;&#x3002;&#x628A;</p>
+<p><img src="../../images/mediatorbefore.png" alt="&#x672A;&#x4F7F;&#x7528;&#x4E2D;&#x4ECB;&#x8005;&#x6A21;&#x5F0F;"></p>
+<p>&#x53D8;&#x6210;</p>
+<p><img src="../../images/mediator.png" alt="&#x4F7F;&#x7528;&#x4E2D;&#x4ECB;&#x8005;&#x6A21;&#x5F0F;"></p>
+<h5 id="&#x5C0F;&#x7ED3;">&#x5C0F;&#x7ED3;</h5>
+<p>&#x4E2D;&#x4ECB;&#x8005;&#x6A21;&#x5F0F;&#x662F;&#x8FEA;&#x7C73;&#x7279;&#x6CD5;&#x5219;&#x7684;&#x4E00;&#x79CD;&#x5B9E;&#x73B0;&#x3002;&#x8FEA;&#x7C73;&#x7279;&#x6CD5;&#x5219;&#x4E5F;&#x79F0;&#x6700;&#x5C11;&#x77E5;&#x8BC6;&#x539F;&#x5219;&#xFF0C;&#x662F;&#x6307;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x5E94;&#x8BE5;&#x5C3D;&#x53EF;&#x80FD;&#x5C11;&#x7684;&#x4E86;&#x89E3;&#x53E6;&#x5916;&#x7684;&#x5BF9;&#x8C61;&#x3002;
+&#x4F46;&#x662F;&#x7F3A;&#x70B9;&#x4E5F;&#x662F;&#x5F88;&#x660E;&#x663E;&#xFF0C;&#x9700;&#x8981;&#x7EF4;&#x62A4;&#x4E00;&#x4E2A;&#x81C3;&#x80BF;&#x7684;&#x4E2D;&#x4ECB;&#x8005;&#x5BF9;&#x8C61;&#x3002;</p>
 
                     
                     </section>
