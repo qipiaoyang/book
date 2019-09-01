@@ -1,4 +1,7 @@
-# Summary
+#道缘随记
+
+### 业精于勤，荒于嬉。行成于思，毁于随。
+
 
 + [Introduction](README.md)
 + [前端技术篇](frontToEnd/index.md)
@@ -32,8 +35,8 @@
 		* [代码重构](frontToEnd/gof/reviewCode.md)
 	- [JS基础知识](frontToEnd/ecmascript/index.md)
 		* [instanceof 与 typeof 的区别](frontToEnd/ecmascript/instanceofAndTypeof.md)
-		* [数字的方法](frontToEnd/ecmascript/number.md)
 		* [undefined与null的故事](frontToEnd/ecmascript/undefinedNull.md)
+		* [数字的方法](frontToEnd/ecmascript/number.md)
 		* [js里面关于object的方法](frontToEnd/ecmascript/object.md)	
 		* [for循环遍历优化的几种方法](frontToEnd/ecmascript/for.md)
 	- [git相关文档](frontToEnd/git/index.md)
@@ -57,5 +60,5 @@
 	- [登陆系统](architecture/standardLogin.md)
 
 + [markdown基础语法](frontToEnd/markdown.md)
-+ [翻墙细则](frontToEnd/ssh.md)
++ [市场营销](marketing/index.md)
 + [修身](cultivate/index.md)

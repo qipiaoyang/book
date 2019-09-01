@@ -51,7 +51,7 @@ console.log(1.256.toFixed(2));// 1.26 保留小数点后两位,五舍六入为 1
 ```
 
 
-##### 2.2  Number.prototype.toExponential(param = length)  以指数的方式展现，同时保留几位小数，默认是展现全部   __这点与toFixed不一样__
+##### 2.2  Number.prototype.toExponential(param = maxLength)  以指数的方式展现，同时保留几位小数，默认是展现全部   __这点与toFixed不一样__
 
 方法使用指数表示法来格式化一个数值，相当于保留几位小数并且四舍五入。默认里面的参数为全部展现
 
