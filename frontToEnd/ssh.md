@@ -36,3 +36,27 @@ shadowsock-window (https://github.com/shadowsocks/shadowsocks-windows/releases/d
 
 4.把代理服务器的选项取消掉保存就ok了
 
+
+#### 快速搭建ssr
+
+```
+wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh
+chmod +x shadowsocks-all.sh
+./shadowsocks-all.sh 2>&1 | tee shadowsocks-all.log
+```
+
+然后出现下面这种情况
+
+```
+Congratulations, your_shadowsocks_version install completed!
+Your Server IP :11.11.11.11
+Your Server Port :8989
+Your Password :123456
+Your Encryption Method:aes-256-cfb
+
+Welcome to visit:https://teddysun.com/486.html
+Enjoy it
+```
+
+
+说明部署已完成.
