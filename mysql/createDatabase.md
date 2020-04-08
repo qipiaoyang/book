@@ -58,3 +58,9 @@ ALTER TABLE mingzi CHANGE id2 id1 INT NULL DEFAULT 100;
 ```
 ALTER TABLE mingzi RENAME TO mingzi1;
 ```
+
+##### 10.数据表清空，并且让id从0开始
+
+```
+truncate table tableName;
+```
