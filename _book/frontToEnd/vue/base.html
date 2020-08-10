@@ -5,7 +5,7 @@
         <!-- head:start -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>接口和面向接口编程 | 道缘随记</title>
+        <title>vue3的目标 | 道缘随记</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="generator" content="GitBook 2.6.9">
@@ -53,10 +53,10 @@
         
     
     
-    <link rel="next" href="../../frontToEnd/gof/reviewCode.html" />
+    <link rel="next" href="../../frontToEnd/vue/update.html" />
     
     
-    <link rel="prev" href="../../frontToEnd/gof/openClose.html" />
+    <link rel="prev" href="../../frontToEnd/vue/index.html" />
     
 
         <!-- head:end -->
@@ -65,9 +65,9 @@
         <!-- body:start -->
         
     <div class="book"
-        data-level="1.3.21"
-        data-chapter-title="接口和面向接口编程"
-        data-filepath="frontToEnd/gof/interfaceAndFaceToApi.md"
+        data-level="1.8.1"
+        data-chapter-title="vue3的目标"
+        data-filepath="frontToEnd/vue/base.md"
         data-basepath="../.."
         data-revision="Mon Aug 10 2020 02:41:58 GMT+0800 (CST)"
         data-innerlanguage="">
@@ -517,7 +517,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.3.21" data-path="frontToEnd/gof/interfaceAndFaceToApi.html">
+        <li class="chapter " data-level="1.3.21" data-path="frontToEnd/gof/interfaceAndFaceToApi.html">
             
                 
                     <a href="../../frontToEnd/gof/interfaceAndFaceToApi.html">
@@ -766,7 +766,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.8.1" data-path="frontToEnd/vue/base.html">
+        <li class="chapter active" data-level="1.8.1" data-path="frontToEnd/vue/base.html">
             
                 
                     <a href="../../frontToEnd/vue/base.html">
@@ -1140,7 +1140,27 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h3 id="&#x63A5;&#x53E3;&#x548C;&#x9762;&#x5411;&#x63A5;&#x53E3;&#x7F16;&#x7A0B;">&#x63A5;&#x53E3;&#x548C;&#x9762;&#x5411;&#x63A5;&#x53E3;&#x7F16;&#x7A0B;</h3>
+                        <h3 id="vue3&#x7684;&#x76EE;&#x6807;&#xFF08;vue2&#x4E3A;&#x5565;&#x8981;&#x5347;&#x7EA7;&#x5230;vue3&#xFF09;">vue3&#x7684;&#x76EE;&#x6807;&#xFF08;vue2&#x4E3A;&#x5565;&#x8981;&#x5347;&#x7EA7;&#x5230;vue3&#xFF09;</h3>
+<p>&#x4ECE;&#x9C7F;&#x9C7C;&#x4E1D;&#x516C;&#x5F00;&#x7684;&#x4E00;&#x4E9B;&#x4FE1;&#x606F;&#x5F53;&#x4E2D;&#xFF0C;&#x4ED6;&#x8BF4;&#x4E86;&#x5927;&#x6982;&#x6709;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x539F;&#x56E0;&#x5BFC;&#x81F4;&#x91CD;&#x5199;vue&#x3002;</p>
+<h5 id="1&#x4F7F;&#x7528;&#x65B0;&#x7684;&#x8BED;&#x8A00;&#x7279;&#x6027;">1.&#x4F7F;&#x7528;&#x65B0;&#x7684;&#x8BED;&#x8A00;&#x7279;&#x6027;</h5>
+<p>&#x4F7F;&#x7528;&#x65B0;&#x7684;&#x8BED;&#x8A00;&#x7279;&#x6027;&#xFF0C;&#x8BF4;&#x767D;&#x4E86;&#x6838;&#x5FC3;&#x5C31;&#x662F;es7&#x63D0;&#x4F9B;&#x4E86;&#x5143;&#x7F16;&#x7A0B;&#xFF08;&#x5728;&#x8BED;&#x8A00;&#x5C42;&#x9762;&#x505A;&#x51FA;&#x4FEE;&#x6539;&#xFF09;&#xFF0C;&#x53EF;&#x4EE5;&#x89E3;&#x51B3;&#x76EE;&#x524D;vue2&#x5B58;&#x5728;&#x7684;&#x4E00;&#x4E9B;&#x95EE;&#x9898;&#xFF0C;&#x6BD4;&#x5982; <strong>data&#x65E0;&#x6CD5;&#x76D1;&#x6D4B;&#x65B0;&#x589E;&#x65B0;&#x5C5E;&#x6027;.</strong> .&#x6240;&#x4EE5;vue3&#x4F7F;&#x7528;&#x4E86;
+proxy(&#x4EE3;&#x7406;)&#x3001;reflect(&#x53CD;&#x5C04;)&#x6765;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#x3002;&#x4F46;&#x662F;&#x6709;&#x4E00;&#x4E2A;&#x7F3A;&#x70B9;&#xFF0C;<strong>&#x56E0;&#x4E3A;proxy&#x4E0E;reflect&#x65E0;&#x6CD5;&#x4F7F;&#x7528;babel&#x7684;polyfill&#x57AB;&#x7247;&#x6765;&#x89E3;&#x6790;&#xFF0C;&#x6240;&#x4EE5;vue3&#x5E94;&#x8BE5;&#x662F;&#x4E0D;&#x652F;&#x6301;IE&#x7684;.</strong></p>
+<h5 id="2&#x89E3;&#x51B3;&#x4F53;&#x7CFB;&#x67B6;&#x6784;&#x5B58;&#x5728;&#x7684;&#x95EE;&#x9898;&#x5E76;&#x4E14;&#x89E3;&#x8026;&#x5185;&#x90E8;&#x5305;">2.&#x89E3;&#x51B3;&#x4F53;&#x7CFB;&#x67B6;&#x6784;&#x5B58;&#x5728;&#x7684;&#x95EE;&#x9898;&#x5E76;&#x4E14;&#x89E3;&#x8026;&#x5185;&#x90E8;&#x5305;</h5>
+<p>&#x7B80;&#x5355;&#x6765;&#x8BF4;&#xFF0C;vue2&#x7684;&#x4EE3;&#x7801;&#x89E3;&#x85D5;&#x4E0D;&#x591F;&#x5145;&#x5206;&#xFF0C;&#x7136;&#x540E;&#x5BFC;&#x81F4;&#x79EF;&#x7D2F;&#x6765;&#x6280;&#x672F;&#x503A;&#x3002;</p>
+<h5 id="3&#x5207;&#x6362;&#x5230;typescript">3.&#x5207;&#x6362;&#x5230;TypeScript</h5>
+<p>&#x5F15;&#x5165;&#x4E86;flow&#xFF0C;&#x7136;&#x540E;&#x7C7B;&#x578B;&#x68C0;&#x67E5;&#x51CF;&#x5C11;&#x4E86;&#x524D;&#x7AEF;bug&#x4EA7;&#x751F;&#x3002;</p>
+<h5 id="4&#x8BBE;&#x7F6E;rfc&#xFF08;&#x5F81;&#x6C42;&#x4FEE;&#x6B63;&#x610F;&#x89C1;&#xFF09;&#x6D41;&#x7A0B;">4.&#x8BBE;&#x7F6E;RFC&#xFF08;&#x5F81;&#x6C42;&#x4FEE;&#x6B63;&#x610F;&#x89C1;&#xFF09;&#x6D41;&#x7A0B;</h5>
+<p>&#x7B80;&#x5355;&#x6765;&#x8BF4;&#x5C31;&#x662F;&#x8FCE;&#x5408;&#x793E;&#x533A;&#x3002;</p>
+<h5 id="5&#x514B;&#x670D;&#x865A;&#x62DF;dom&#x7684;&#x74F6;&#x9888;">5.&#x514B;&#x670D;&#x865A;&#x62DF;DOM&#x7684;&#x74F6;&#x9888;</h5>
+<p>vue2&#x8FD8;&#x662F;&#x901A;&#x8FC7;&#x628A;&#x6A21;&#x677F;&#x7F16;&#x8BD1;&#x6210;vnode&#x6765;&#x5F62;&#x6210;vnode tree&#xFF0C;&#x7136;&#x540E;&#x5BF9;vnode tree&#x53BB;&#x5BF9;&#x6BD4;&#xFF0C;&#x6765; <strong>&#x4E00;&#x6B21;&#x6027;</strong> &#x66F4;&#x65B0;&#x89C6;&#x56FE;&#x3002;&#x8FD9;&#x6837;&#x5C31;&#x4F1A;&#x4EA7;&#x751F;&#x4E00;&#x4E9B;&#x6027;&#x80FD;&#x95EE;&#x9898;&#xFF0C;&#x6BD4;&#x5982;&#x6709;&#x4E9B;&#x8D44;&#x6E90;&#x662F;&#x9700;&#x8981;
+&#x4F9D;&#x8D56;dom&#x7684;&#x66F4;&#x65B0;&#x518D;&#x6765;&#x52A0;&#x8F7D;&#x7684;&#xFF0C;&#x6309;&#x7167;&#x76EE;&#x524D;&#x7684;vue&#x7684;&#x66F4;&#x65B0;&#x7B56;&#x7565;&#x6765;&#x770B;&#xFF0C;&#x5C31;&#x4F1A;&#x65E0;&#x9650;&#x5236;&#x7684;&#x589E;&#x52A0;loaded&#x65F6;&#x95F4;&#x3002;</p>
+<p>&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;</p>
+<ol>
+<li>&#x751F;&#x6210;&#x547D;&#x4EE4;&#x5F0F;dom&#xFF0C;&#x89E3;&#x85D5;dom&#x4E4B;&#x95F4;&#x7684;&#x8026;&#x5408;&#x6027;&#xFF0C;&#x8FD9;&#x6837;&#x5B50;&#x65E0;&#x8BBA;&#x662F;&#x590D;&#x7528;&#xFF0C;&#x8FD8;&#x662F;&#x53EF;&#x6269;&#x5C55;&#x6027;&#x7B49;&#x7B49;&#x90FD;&#x6709;&#x5F88;&#x5927;&#x7684;&#x63D0;&#x5347;&#x3002;&#xFF08;react&#x7684;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#xFF09;</li>
+<li>&#x4F18;&#x5316;&#x904D;&#x5386;&#x8FC7;&#x7A0B;&#xFF0C;vue2&#x505A;&#x4E86;&#x4E00;&#x90E8;&#x5206;&#xFF08;&#x6211;&#x4EEC;&#x4F1A;&#x5728;&#x540E;&#x9762;vue&#x7684;diff&#x7B97;&#x6CD5;&#x9636;&#x6BB5;&#x6765;&#x8BB2;&#x89E3;&#xFF09;&#xFF0C;vue3&#x589E;&#x52A0;runtime&#x4F18;&#x5316;&#x3002;</li>
+</ol>
+<h5 id="7&#x6700;&#x5C0F;&#x5316;bundle&#x7684;&#x5927;&#x5C0F;">7.&#x6700;&#x5C0F;&#x5316;bundle&#x7684;&#x5927;&#x5C0F;</h5>
+<p>&#x8FD9;&#x91CC;&#x4F18;&#x5316;bundle&#x4E3B;&#x8981;&#x662F;&#x901A;&#x8FC7;&#x628A;&#x4E00;&#x4E9B;&#x529F;&#x80FD;&#x89E3;&#x85D5;&#x6210;&#x591A;&#x4E2A;&#x5305;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x51CF;&#x5C11;&#x4EE3;&#x7801;&#x4F53;&#x79EF;&#x3002;</p>
 
                     
                     </section>
@@ -1151,10 +1171,10 @@
         </div>
 
         
-        <a href="../../frontToEnd/gof/openClose.html" class="navigation navigation-prev " aria-label="Previous page: 开放—封闭原则"><i class="fa fa-angle-left"></i></a>
+        <a href="../../frontToEnd/vue/index.html" class="navigation navigation-prev " aria-label="Previous page: vue个人笔记"><i class="fa fa-angle-left"></i></a>
         
         
-        <a href="../../frontToEnd/gof/reviewCode.html" class="navigation navigation-next " aria-label="Next page: 代码重构"><i class="fa fa-angle-right"></i></a>
+        <a href="../../frontToEnd/vue/update.html" class="navigation navigation-next " aria-label="Next page: vue3升级的部分核心原理"><i class="fa fa-angle-right"></i></a>
         
     </div>
 </div>
