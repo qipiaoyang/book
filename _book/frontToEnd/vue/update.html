@@ -69,7 +69,7 @@
         data-chapter-title="vue3升级的部分核心原理"
         data-filepath="frontToEnd/vue/update.md"
         data-basepath="../.."
-        data-revision="Mon Aug 10 2020 02:41:58 GMT+0800 (CST)"
+        data-revision="Wed Aug 12 2020 08:12:12 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1141,8 +1141,81 @@
                     <section class="normal" id="section-">
                     
                         <h3 id="vue3&#x5347;&#x7EA7;&#x7684;&#x90E8;&#x5206;&#x6838;&#x5FC3;&#x539F;&#x7406;">vue3&#x5347;&#x7EA7;&#x7684;&#x90E8;&#x5206;&#x6838;&#x5FC3;&#x539F;&#x7406;</h3>
+<p>&#x7ED3;&#x5408;&#x524D;&#x9762;&#x4E00;&#x7AE0;&#xFF0C;&#x6211;&#x4EEC;&#x5F88;&#x6E05;&#x695A;&#x7684;&#x77E5;&#x9053;vue3&#x5927;&#x6982;&#x5E72;&#x4E86;&#x4E9B;&#x4EC0;&#x4E48;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x5C31;&#x4E3B;&#x8981;&#x628A;&#x90E8;&#x5206;&#x6211;&#x7684;&#x4E2A;&#x4EBA;&#x7406;&#x89E3;&#x7ED3;&#x5408;&#x6E90;&#x7801;&#x6765;&#x5199;&#x4E00;&#x4E0B;</p>
 <h4 id="1-proxy&#x4E0E;reflect&#x4EE3;&#x7406;">1. proxy&#x4E0E;reflect&#x4EE3;&#x7406;</h4>
-<h4 id="2-runtimecore">2. runtime-core</h4>
+<pre><code>const toProxy = new WeakMap()
+const toRaw = new WeakMap()
+const targetMap = new WeakMap()
+const activeEffectStack = []
+
+const isObj = (x: any): x is object =&gt; typeof x === &apos;object&apos;
+
+function track(target, key) {
+  const effect = activeEffectStack[activeEffectStack.length - 1]
+  if (effect) {
+    let depsMap = targetMap.get(target)
+    if (!depsMap) {
+      targetMap.set(target, (depsMap = new Map()))
+    }
+    let dep = depsMap.get(key)
+    if (!dep) {
+      depsMap.set(key, (dep = new Set()))
+    }
+    if (!dep.has(effect)) {
+      dep.add(effect)
+    }
+  }
+}
+
+function trigger(target, key) {
+  let deps = targetMap.get(target)
+  const effects = new Set()
+
+  deps.get(key).forEach(e =&gt; effects.add(e))
+  effects.forEach((e: any) =&gt; e())
+}
+
+export function reactive(target) {
+  if (!isObj(target)) return target
+
+  let proxy = toProxy.get(target)
+  if (proxy) return proxy
+
+  if (toRaw.has(target)) return target
+
+  const handlers = {
+    get(target, key, receiver) {
+      let newValue = target[key]
+
+      if (isObj(newValue)) {
+        return reactive(newValue)
+      }
+      let res = Reflect.get(target, key, receiver)
+      track(target, key)
+      return res
+    },
+    set(target, key, value, receiver) {
+      let res = Reflect.set(target, key, value, receiver)
+      if (key in target) trigger(target, key)
+      return res
+    },
+    deleteProperty(target, key, receiver) {
+      return Reflect.defineProperty(target, key, receiver)
+    }
+  }
+
+  let observed = new Proxy(target, handlers as any)
+
+  toProxy.set(target, observed)
+  toRaw.set(observed, target)
+
+  if (!targetMap.has(target)) {
+    targetMap.set(target, new Map())
+  }
+
+  return observed
+}
+</code></pre><h4 id="2-runtimecore">2. runtime-core</h4>
 
                     
                     </section>

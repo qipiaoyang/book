@@ -69,7 +69,7 @@
         data-chapter-title="vue的diff算法"
         data-filepath="frontToEnd/vue/diff.md"
         data-basepath="../.."
-        data-revision="Mon Aug 10 2020 02:41:58 GMT+0800 (CST)"
+        data-revision="Wed Aug 12 2020 08:12:12 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1140,9 +1140,39 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h3 id="vue3&#x5347;&#x7EA7;&#x7684;&#x90E8;&#x5206;&#x6838;&#x5FC3;&#x539F;&#x7406;">vue3&#x5347;&#x7EA7;&#x7684;&#x90E8;&#x5206;&#x6838;&#x5FC3;&#x539F;&#x7406;</h3>
-<h4 id="1-proxy&#x4E0E;reflect&#x4EE3;&#x7406;">1. proxy&#x4E0E;reflect&#x4EE3;&#x7406;</h4>
-<h4 id="2-runtimecore">2. runtime-core</h4>
+                        <h3 id="vue&#x7684;diff&#x7B97;&#x6CD5;">vue&#x7684;diff&#x7B97;&#x6CD5;</h3>
+<h4 id="patch&#x8FC7;&#x7A0B;">patch&#x8FC7;&#x7A0B;</h4>
+<p>&#x7B80;&#x5355;&#x6765;&#x8BF4;&#x5C31;&#x662F;&#xFF1A;n1 &#x4EE3;&#x8868;&#x65E7;&#x8282;&#x70B9;&#xFF0C;n2&#x4EE3;&#x8868;&#x65B0;&#x8282;&#x70B9;</p>
+<ol>
+<li><p>&#x5982;&#x679C;&#x662F;&#x5355;VNode&#x5BF9;&#x6BD4;&#xFF1A;
+ 1.1 n1&#x4E3A;&#x7A7A;&#xFF0C;&#x5219;&#x521B;&#x5EFA;n2</p>
+<p> 1.2 n2&#x4E3A;&#x7A7A;&#xFF0C;&#x5219;&#x5220;&#x9664;n1</p>
+<p> 1.3 n1&#x7684;&#x7C7B;&#x578B;&#x4E0E;n2&#x4E0D;&#x4E00;&#x81F4;&#xFF0C;&#x5219; &#x5220;&#x9664;n1&#x521B;&#x5EFA;n2.</p>
+<p> 1.4 n1&#x4E0E;n2&#x4E00;&#x81F4;&#xFF0C;&#x5219;patch&#xFF0C;&#x5224;&#x65AD;&#x5176;patch&#x5176;props&#xFF0C;class&#xFF0C;attr&#xFF0C;&#x8FDB;&#x884C;dom&#x64CD;&#x4F5C;</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x662F;&#x591A;&#x8282;&#x70B9;&#xFF0C;&#x4E14;&#x662F;&#x65E0;key&#x5F62;&#x5F0F;
+ 2.1 &#x53D6;n2&#x4E0E;n1&#x6700;&#x5C0F;&#x957F;&#x5EA6;&#x904D;&#x5386;&#xFF1A;&#x4F7F;&#x7528;patch&#x5904;&#x7406;</p>
+<p> 2.2 &#x5982;&#x679C;n1&#x591A;&#x51FA;&#x6765;&#x7684;&#xFF1A;unmountChildren</p>
+<p> 2.3 &#x5982;&#x679C;n2&#x591A;&#x51FA;&#x6765;&#x7684;&#xFF1A;&#x8FDB;&#x884C;mountChildren</p>
+</li>
+<li><p>&#x5982;&#x679C;&#x662F;&#x591A;&#x8282;&#x70B9;&#xFF0C;&#x6709;key&#x5F62;&#x5F0F;
+ 3.1 &#x5148;&#x4ECE;&#x5F00;&#x5934;&#x904D;&#x5386;&#xFF0C;&#x7C7B;&#x578B;&#x4E00;&#x81F4;&#x5219;patch&#xFF0C;&#x53D1;&#x73B0;&#x7C7B;&#x578B;&#x4E0D;&#x4E00;&#x81F4;&#x5219;&#x505C;&#x6B62;&#x3002;&#x5982; (a b) c&#x4E0E;(a b) d e</p>
+<p> 3.2 &#x4ECE;&#x5C3E;&#x5F00;&#x59CB;&#x904D;&#x5386;&#xFF0C;&#x7C7B;&#x578B;&#x4E00;&#x81F4;&#x5219;patch&#xFF0C;&#x53D1;&#x73B0;&#x7C7B;&#x578B;&#x4E0D;&#x4E00;&#x81F4;&#x5219;&#x505C;&#x6B62;&#x3002; &#x5982;a c (d f)&#x4E0E;b a (d f)</p>
+<p> 3.3 &#x5904;&#x7406;n2&#x4E24;&#x5934;&#x591A;&#x51FA;&#x6765;&#x7684;&#x90E8;&#x5206;&#xFF0C; &#x76F4;&#x63A5;mount&#x3002;&#x5982;b c&#x4E0E;(a) b c&#x6216;&#x8005; b c&#x4E0E;b c (d)</p>
+<p> 3.4 &#x5904;&#x7406;n1&#x4E24;&#x5934;&#x591A;&#x51FA;&#x6765;&#x7684;&#x90E8;&#x5206;&#xFF0C; &#x76F4;&#x63A5;&#x5220;&#x9664;&#x3002;&#x5982;(a) b c&#x4E0E;b c&#x6216;&#x8005;b c (d)&#x4E0E;b c</p>
+<p> 3.5 &#x5904;&#x7406;n1&#x4E0E;n2 &#x4E2D;&#x95F4;&#x9057;&#x7559;&#x7684;&#x5982;b (e f g h) c&#x4E0E;b (f g k h) c&#x3002;</p>
+<p> 3.5.1 &#x5C06;n2&#x4E2D;&#x95F4;&#x7684; f g k h&#x751F;&#x6210;Map</p>
+<p> 3.5.2 &#x904D;&#x5386;n1&#x4E2D;&#x95F4;&#x7684;(e f g h)</p>
+<p> 3.5.2.1 &#x904D;&#x5386;&#x8FC7;&#x7A0B;&#x4E2D;&#x53D1;&#x73B0;&#x4E0D;&#x5728;n2&#x4E2D;&#xFF0C;&#x5219;&#x76F4;&#x63A5;&#x5220;&#x9664;&#x3002;</p>
+<p> 3.5.2.2 &#x904D;&#x5386;&#x8FC7;&#x7A0B;&#x4E2D;&#x53D1;&#x73B0;&#x5728;n2&#x4E2D;&#xFF0C;&#x5219;&#x76F4;&#x63A5;patch&#x3002;&#x5E76;&#x8BB0;&#x5F55;n2&#x4E2D;&#x4F4D;&#x7F6E;&#x3002;&#x540E;&#x9762;&#x9700;&#x8981;&#x79FB;&#x52A8;&#x4F4D;&#x7F6E;&#x3002;</p>
+<p> 3.6 &#x5BF9;&#x4E8E;n2&#x4E2D;&#x95F4;&#x7684; f g k h&#x65B0;&#x589E;&#x7684;&#x5982;k &#x8FDB;&#x884C;mount&#x3002;</p>
+<p> 3.7 &#x5BF9;&#x4E8E;3.5.2.2&#x4E2D;&#x7684;&#x8FDB;&#x884C;&#x79FB;&#x52A8;&#x4F4D;&#x7F6E;&#x3002;</p>
+<p> &#x6211;&#x4EEC;&#x5C31;&#x77E5;&#x9053;&#x4E86;,&#x5982;&#x679C;&#x6709;key&#x7684;&#x8BDD;&#xFF0C;&#x4F1A;&#x901A;&#x8FC7;key&#x7B5B;&#x9009;&#xFF0C;&#x4ECE;&#x800C;&#x660E;&#x786E;&#x54EA;&#x4E2A;&#x8282;&#x70B9;&#x5220;&#x9664;/&#x66FF;&#x6362;/&#x79FB;&#x52A8;&#x5C3D;&#x53EF;&#x80FD;&#x7684;&#x51CF;&#x5C11;dom&#x64CD;&#x4F5C;&#x3002;&#x4F46;&#x662F;&#x6CA1;&#x6709;key&#x7684;&#x8BDD;&#xFF0C;&#x53EA;&#x80FD;&#x901A;&#x8FC7;&#x904D;&#x5386;&#xFF0C;&#x76F8;&#x5BF9;&#x800C;&#x8A00;&#x8FD9;&#x79CD;&#x64CD;&#x4F5C;dom&#x7684;&#x60C5;&#x51B5;&#x8F83;&#x591A;&#x3002;
+ &#x6BD4;&#x5982;&#xFF1A;a b c d e f &#x4E0E; b c d e f
+ &#x8FD9;&#x79CD;&#x5F62;&#x5F0F;&#x4F1A;&#x5BFC;&#x81F4;&#xFF0C;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x90FD;&#x8981;&#x8FDB;&#x884C;&#x8C03;&#x6574;&#x64CD;&#x4F5C;dom&#x3002;</p>
+</li>
+</ol>
+<p><img src="../../images/diff.png" alt="diff"></p>
 
                     
                     </section>

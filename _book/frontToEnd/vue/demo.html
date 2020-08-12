@@ -69,7 +69,7 @@
         data-chapter-title="vue3案例"
         data-filepath="frontToEnd/vue/demo.md"
         data-basepath="../.."
-        data-revision="Mon Aug 10 2020 02:41:58 GMT+0800 (CST)"
+        data-revision="Wed Aug 12 2020 08:12:12 GMT+0800 (CST)"
         data-innerlanguage="">
     
 
@@ -1140,10 +1140,65 @@
                 
                     <section class="normal" id="section-">
                     
-                        <h3 id="vue3&#x5347;&#x7EA7;&#x7684;&#x90E8;&#x5206;&#x6838;&#x5FC3;&#x539F;&#x7406;">vue3&#x5347;&#x7EA7;&#x7684;&#x90E8;&#x5206;&#x6838;&#x5FC3;&#x539F;&#x7406;</h3>
-<h4 id="1-proxy&#x4E0E;reflect&#x4EE3;&#x7406;">1. proxy&#x4E0E;reflect&#x4EE3;&#x7406;</h4>
-<h4 id="2-runtimecore">2. runtime-core</h4>
+                        <h3 id="vue3&#x6848;&#x4F8B;">vue3&#x6848;&#x4F8B;</h3>
+<p>composition-api  <a href="https://composition-api.vuejs.org/#api-introduction" target="_blank">https://composition-api.vuejs.org/#api-introduction</a></p>
+<h4 id="vue3&#x76F8;&#x5173;&#x7684;&#x91CD;&#x8981;api">vue3&#x76F8;&#x5173;&#x7684;&#x91CD;&#x8981;api</h4>
+<ol>
+<li>setup</li>
+<li>reactive</li>
+<li>ref(&#x8FD8;&#x53EF;&#x4EE5;&#x5F15;&#x7528;&#x9875;&#x9762;&#x4E0A;&#x7684;&#x5143;&#x7D20;&#x6216;&#x8005;&#x7EC4;&#x4EF6;)</li>
+<li>isRef</li>
+<li>toRefs(&#x53EF;&#x4EE5;&#x628A;reactive&#x5BF9;&#x8C61;&#x8F6C;&#x6362;&#x6210;ref&#x5BF9;&#x8C61;)</li>
+<li>computed</li>
+<li>watch</li>
+<li>lifecycle (onBeforeMount, onMounted, onBeforeUpdate, onUpdated, onBeforeUnmount, onUnmounted, onErrorCaptured)</li>
+<li>provide &amp;&amp; inject</li>
+</ol>
+<h4 id="demo&#x793A;&#x4F8B;">demo&#x793A;&#x4F8B;</h4>
+<pre><code>import { ref, computed, watch, onMounted } from &apos;vue&apos;
 
+const App = {
+  template: `
+    &lt;div&gt;
+      &lt;span&gt;count is {{ count }}&lt;/span&gt;
+      &lt;span&gt;plusOne is {{ plusOne }}&lt;/span&gt;
+      &lt;button @click=&quot;increment&quot;&gt;count++&lt;/button&gt;
+    &lt;/div&gt;
+  `,
+  setup() {
+    // reactive state
+    const count = ref(0)
+    // computed state
+    const plusOne = computed(() =&gt; count.value + 1)
+    // method
+    const increment = () =&gt; { count.value++ }
+    // watch
+    watch(() =&gt; count.value * 2, val =&gt; {
+      console.log(`count * 2 is ${val}`)
+    })
+    // lifecycle
+    onMounted(() =&gt; {
+      console.log(`mounted`)
+    })
+    // expose bindings on render context
+    return {
+      count,
+      plusOne,
+      increment
+    }
+  }
+}
+</code></pre><h4 id="&#x751F;&#x547D;&#x5468;&#x671F;&#x5BF9;&#x6BD4;">&#x751F;&#x547D;&#x5468;&#x671F;&#x5BF9;&#x6BD4;</h4>
+<pre><code>beforeCreate            setup()
+created                 setup()
+beforeMount             onBeforeMount
+mounted                 onMounted
+beforeUpdate            onBeforeUpdate
+updated                 onUpdated
+beforeDestroy           onBeforeUnmount
+destroyed               onUnmounted
+errorCaptured           onErrorCaptured
+</code></pre>
                     
                     </section>
                 
